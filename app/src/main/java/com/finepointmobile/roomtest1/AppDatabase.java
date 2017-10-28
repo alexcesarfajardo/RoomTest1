@@ -7,7 +7,7 @@ import android.arch.persistence.room.RoomDatabase;
  * Created by danielmalone on 10/27/17.
  */
 
-@Database(entities = User.class, version = 1)
+@Database(entities = User.class, version = 3)
 public abstract class AppDatabase extends RoomDatabase {
     public abstract UserDao userDao();
 }

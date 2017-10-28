@@ -1,13 +1,13 @@
 package com.finepointmobile.roomtest1;
 
 import android.arch.persistence.room.Room;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
@@ -48,8 +48,7 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                db.userDao().insertAll(daniel);
-                Log.d(TAG, "onCreate: " + db.userDao().getAll().size());
+                startActivity(new Intent(MainActivity.this, CreateUser.class));
             }
         });
     }
