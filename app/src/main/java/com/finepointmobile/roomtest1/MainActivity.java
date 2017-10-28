@@ -4,6 +4,7 @@ import android.arch.persistence.room.Room;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -14,8 +15,12 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
 
     AppDatabase db;
+
     FloatingActionButton fab;
     RecyclerView recyclerView;
+
+    RecyclerView.Adapter adapter;
+
     User daniel;
 
     @Override
@@ -32,6 +37,11 @@ public class MainActivity extends AppCompatActivity {
                 .fallbackToDestructiveMigration()
                 .allowMainThreadQueries()
                 .build();
+
+        adapter = new UserAdapter(db.userDao().getAll());
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(adapter);
+
 
         daniel = new User("Daniel", "Malone", "danieljmalone@gmail.com");
 
